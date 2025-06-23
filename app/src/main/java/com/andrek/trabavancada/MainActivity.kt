@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(navController = navController, startDestination = "main"){
                     composable(route="main"){
-
+                        MenuScreen()
                     }
 
                 }
