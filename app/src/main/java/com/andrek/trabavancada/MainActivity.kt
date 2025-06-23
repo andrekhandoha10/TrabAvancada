@@ -27,7 +27,15 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(navController = navController, startDestination = "main"){
                     composable(route="main"){
-                        MenuScreen()
+                        MenuScreen(navController = navController)
+                    }
+
+                    composable(route="DiceRoller"){
+                        DiceRollerScreen(navController = navController)
+                    }
+
+                    composable(route="RockPaperScissors"){
+                        RockPaperScissorsScreen(navController = navController)
                     }
 
                 }
