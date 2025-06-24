@@ -4,8 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -19,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Preview
@@ -31,7 +35,9 @@ fun DiceRollerScreen(navController: NavController){
 fun DiceRollerScreenApp(navController: NavController,modifier: Modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.Center)){
     var resultHome by remember { mutableStateOf(1) }
     var resultAway by remember { mutableStateOf(1) }
-    var firstTime by remember { mutableStateOf(false) }
+    var firstTime by remember { mutableStateOf(true) }
+    var defaultText by remember { mutableStateOf(" ") }
+
     val imageResourceHome = imageResourceDice(resultHome)
     val imageResourceAway = imageResourceDice(resultAway)
     Column(
@@ -52,28 +58,30 @@ fun DiceRollerScreenApp(navController: NavController,modifier: Modifier = Modifi
                 )
         }
 
-        if (firstTime) {
+        Text(defaultText, fontSize = 32.sp)
+        if (!firstTime) {
             if (resultAway < resultHome) {
-                Text("Player 1 Ganhou")
+                defaultText = "Player 1 Ganhou"
             } else if (resultHome < resultAway) {
-                Text("Player 2 Ganhou")
+                defaultText = "Player 2 Ganhou"
             } else {
-                Text("Empate!")
+                defaultText = "Empate"
             }
         }
 
-
+        Spacer(modifier = Modifier.height(46.dp))
         Button(onClick = {
             resultHome = (1..6).random()
             resultAway = (1..6).random()
-            firstTime = true
-        }) {
-            Text("Lançar Dados")
+            firstTime = false
+        },modifier = Modifier.width(300.dp).height(100.dp)) {
+            Text("Lançar Dados", fontSize = 32.sp)
         }
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             navController.navigate("main")
-        }) {
-            Text("Home")
+        },modifier = Modifier.width(300.dp).height(100.dp)) {
+            Text("Home", fontSize = 32.sp)
         }
 
 

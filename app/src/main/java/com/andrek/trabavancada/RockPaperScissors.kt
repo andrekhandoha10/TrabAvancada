@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -19,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
@@ -30,8 +32,8 @@ fun RockPaperScissorsScreen(navController: NavController){
 fun RockPaperScissorsScreenApp(navController: NavController,modifier: Modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.Center)){
     var resultHome by remember { mutableStateOf(1) }
     var resultAway by remember { mutableStateOf(1) }
-    var firstTime by remember { mutableStateOf(false) }
-    var defaultText by remember { mutableStateOf("") }
+    var firstTime by remember { mutableStateOf(true) }
+    var defaultText by remember { mutableStateOf(" ") }
     val imageResourceHome = imageResourceRock(resultHome)
     val imageResourceAway = imageResourceRock(resultAway)
 
@@ -53,32 +55,37 @@ fun RockPaperScissorsScreenApp(navController: NavController,modifier: Modifier =
             )
         }
         Spacer(modifier = Modifier.height(32.dp))
-        Text(defaultText)
-        if ((resultHome == 1 && resultAway == 2) || (resultHome == 2 && resultAway == 3) || (resultHome == 3 && resultAway == 1)) {
-            defaultText = "Player 2 Ganhou"
-        } else if ((resultHome == 2 && resultAway == 1) || (resultHome == 3 && resultAway == 2) || (resultHome == 1 && resultAway == 3)){
-            defaultText = "Player 1 Ganhou"
-        } else {
-            defaultText = "Empate"
+        Text(defaultText, fontSize = 32.sp)
+        Spacer(modifier = Modifier.height(32.dp))
+        if (!firstTime) {
+            if ((resultHome == 1 && resultAway == 2) || (resultHome == 2 && resultAway == 3) || (resultHome == 3 && resultAway == 1)) {
+                defaultText = "Player 2 Ganhou"
+            } else if ((resultHome == 2 && resultAway == 1) || (resultHome == 3 && resultAway == 2) || (resultHome == 1 && resultAway == 3)){
+                defaultText = "Player 1 Ganhou"
+            } else {
+                defaultText = "Empate"
+            }
         }
+
 
 
         Column (
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-            Spacer(modifier = Modifier.height(32.dp))
+
             Button(onClick = {
                 resultHome = (1..3).random()
                 resultAway = (1..3).random()
-                firstTime = true
-            }) {
-                Text("Lançar Duelo")
+                firstTime = false
+            },modifier = Modifier.width(300.dp).height(100.dp)) {
+                Text("Lançar Duelo", fontSize = 32.sp)
             }
+            Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
                 navController.navigate("main")
-            }) {
-                Text("Home")
+            },modifier = Modifier.width(300.dp).height(100.dp)) {
+                Text("Home", fontSize = 32.sp)
             }
         }
 

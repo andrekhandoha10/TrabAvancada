@@ -1,5 +1,6 @@
 package com.andrek.trabavancada
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,10 +12,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -32,25 +35,22 @@ fun MenuScreenApp(navController: NavController,modifier: Modifier = Modifier.fil
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
+        Image(
+            painter = painterResource(R.drawable.mainpage),
+            contentDescription = "",
+            modifier = Modifier.size(250.dp)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             navController.navigate("DiceRoller")
-        }
-        ) {
-            Text("Dice \nRoller",fontSize = 18.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 100.dp, vertical = 12.dp))
+        },modifier = Modifier.width(300.dp).height(100.dp)) {
+            Text("Dice Roller", fontSize = 32.sp)
         }
         Spacer(modifier = Modifier.height(32.dp))
         Button(onClick = {
             navController.navigate("RockPaperScissors")
-        }
-        ) {
-            Text(
-                text = "Rock \nPaper\nScissors",
-                fontSize = 18.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 100.dp, vertical = 12.dp)
-            )
+        },modifier = Modifier.width(300.dp).height(100.dp)) {
+            Text("Rock Paper Scissors", fontSize = 26.sp)
         }
     }
 }
