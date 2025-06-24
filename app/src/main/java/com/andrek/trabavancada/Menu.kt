@@ -40,17 +40,25 @@ fun MenuScreenApp(navController: NavController,modifier: Modifier = Modifier.fil
             contentDescription = "",
             modifier = Modifier.size(250.dp)
         )
-        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Bem-vindo, \nEscolha o jogo",
+            fontSize = 24.sp,
+            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+            textAlign = TextAlign.Center,
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
         Button(onClick = {
             navController.navigate("DiceRoller")
         },modifier = Modifier.width(300.dp).height(100.dp)) {
-            Text("Dice Roller", fontSize = 32.sp)
+            Text("Dice Roller", fontSize = 24.sp)
         }
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
             navController.navigate("RockPaperScissors")
         },modifier = Modifier.width(300.dp).height(100.dp)) {
-            Text("Rock Paper Scissors", fontSize = 26.sp)
+            Text("Rock Paper Scissors", fontSize = 24.sp)
         }
     }
 }
