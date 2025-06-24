@@ -15,7 +15,6 @@ Aplicativo Android desenvolvido com **Jetpack Compose**, oferecendo dois jogos s
 - ✅ **Kotlin**
 - ✅ **Jetpack Compose** – Para construção de UI moderna e reativa
 - ✅ **Navigation Compose** – Para navegação entre telas
-- ✅ **Material Design** – Para um visual limpo e intuitivo
 
 ## 🗺️ Estrutura de Navegação
 
