@@ -19,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -55,7 +56,7 @@ fun RockPaperScissorsScreenApp(navController: NavController,modifier: Modifier =
             )
         }
         Spacer(modifier = Modifier.height(32.dp))
-        Text(defaultText, fontSize = 32.sp)
+        Text(defaultText, fontSize = 32.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(32.dp))
         if (!firstTime) {
             if ((resultHome == 1 && resultAway == 2) || (resultHome == 2 && resultAway == 3) || (resultHome == 3 && resultAway == 1)) {
