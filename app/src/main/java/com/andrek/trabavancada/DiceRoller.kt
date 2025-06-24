@@ -20,7 +20,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,7 +58,7 @@ fun DiceRollerScreenApp(navController: NavController,modifier: Modifier = Modifi
                 )
         }
 
-        Text(defaultText, fontSize = 32.sp, fontWeight = FontWeight.Bold)
+        Text(defaultText, fontSize = 32.sp)
         if (!firstTime) {
             if (resultAway < resultHome) {
                 defaultText = "Player 1 Ganhou"
