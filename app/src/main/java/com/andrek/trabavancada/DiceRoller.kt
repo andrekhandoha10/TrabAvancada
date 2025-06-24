@@ -32,8 +32,8 @@ fun DiceRollerScreenApp(navController: NavController,modifier: Modifier = Modifi
     var resultHome by remember { mutableStateOf(1) }
     var resultAway by remember { mutableStateOf(1) }
     var firstTime by remember { mutableStateOf(false) }
-    val imageResourceHome = imageResourcePut(resultHome)
-    val imageResourceAway = imageResourcePut(resultAway)
+    val imageResourceHome = imageResourceDice(resultHome)
+    val imageResourceAway = imageResourceDice(resultAway)
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -41,29 +41,15 @@ fun DiceRollerScreenApp(navController: NavController,modifier: Modifier = Modifi
         Row(
 
         ){
-            // Coluna do Dado Home
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(8.dp)
-            ) {
                 Image(
                     painter = painterResource(imageResourceHome),
                     contentDescription = resultHome.toString()
                 )
-                Text(text = resultHome.toString())
-            }
 
-            // Coluna do Dado Away
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(8.dp)
-            ) {
                 Image(
                     painter = painterResource(imageResourceAway),
                     contentDescription = resultAway.toString()
                 )
-                Text(text = resultAway.toString())
-            }
         }
 
         if (firstTime) {
@@ -94,7 +80,7 @@ fun DiceRollerScreenApp(navController: NavController,modifier: Modifier = Modifi
     }
 }
 
-fun imageResourcePut(result: Int):Int{
+fun imageResourceDice(result: Int):Int{
     val imageResource = when (result) {
         1 -> R.drawable.dice_1
         2 -> R.drawable.dice_2
